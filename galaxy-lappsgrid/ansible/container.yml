@@ -4,17 +4,17 @@ services:
     image: bgruening/galaxy-stable:latest
     working_dir: '/galaxy-central'
     command: ['/usr/bin/startup']
-    volumes:
-      - /export/
-      - /data/
-      - /var/lib/docker
-    expose:
-      - "80"
-      - "21"
-      - "22"
-      - "8000"
-      - "8800"
-      - "9002"
+    #volumes:
+      #- /export/
+      #- /data/
+      #- /var/lib/docker
+    #expose:
+    #  - "80"
+    #  - "21"
+    #  - "22"
+    #  - "8000"
+    #  - "8800"
+    #  - "9002"
 registries: {}
   # Add optional registries used for deployment. For example:
   #  google:
