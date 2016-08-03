@@ -1,15 +1,11 @@
 - hosts: galaxy-lappsgrid
   tasks:
-    - name: Install linux packages
-      raw: apt-get update && apt-get install -y bash emacs24-nox git
-    - name: Setup Directory
-      file: path=/galaxy-central/ state=directory
-    - name: Permissions Fix
-      raw: chmod -R 700 /galaxy-central/
+  #  - name: Install linux packages
+  #    raw: apt-get update && apt-get install -y bash emacs24-nox git
     - name: Add tools
       copy: src="./files/tools" dest="/galaxy-central/tools"
     - name: Add Index
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/index.html dest=/galaxy-central/index.html url_username=suledev url_password:damara2009
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/index.html dest=/galaxy-central/index.html
     - name: Add Tool Conf file
       get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/tool_conf.xml dest=/galaxy-central/tool_conf.xml
     - name: Add Galaxy file
