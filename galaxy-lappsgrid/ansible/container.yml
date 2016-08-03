@@ -3,7 +3,7 @@ services:
   galaxy-lappsgrid:
     image: bgruening/galaxy-stable:latest
     working_dir: '/galaxy-central'
-    command: ['/usr/bin/startup']
+    command: ['usr/bin/startup']
     #volumes:
       #- /export/
       #- /data/

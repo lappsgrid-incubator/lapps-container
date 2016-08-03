@@ -10,3 +10,5 @@ In order to spin up a specific image cd to that image's directory i.e `cd galaxy
 and run `ansible-container build` in order to build the image.
 
 The service takes a little while to start up please be patient.
+
+Afterwards in that same directory you can then run `ansible-container run` in order to run the image. 
