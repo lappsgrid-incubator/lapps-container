@@ -1,7 +1,9 @@
 - hosts: galaxy-lappsgrid
   tasks:
-  #  - name: Install linux packages
-  #    raw: apt-get update && apt-get install -y bash emacs24-nox git
+    - name: Update apt-get
+      apt: upgrade=dist
+    - name: Install Linux Packages
+      command: apt-get install -y bash emacs24-nox git
     - name: Add tools
       copy: src="./files/tools" dest="/galaxy-central/tools"
     - name: Add Index
