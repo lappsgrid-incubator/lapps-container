@@ -7,14 +7,18 @@
     - name: Add tools
       copy: src="./files/tools" dest="/galaxy-central/tools"
     - name: Add Index
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/index.html dest=/galaxy-central/index.html
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/index.html dest=/galaxy-central/static/welcome.html
     - name: Add Tool Conf file
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/tool_conf.xml dest=/galaxy-central/tool_conf.xml
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/tool_conf.xml dest=/galaxy-central/config/tool_conf.xml
     - name: Add Galaxy file
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/galaxy.ini dest=/galaxy-central/galaxy.ini
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/galaxy.ini dest=/galaxy-central/config/galaxy.ini
     - name: Add Welcome file
       get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/welcome.html dest=/galaxy-central/welcome.html
     - name: Add Tool Shed Conf
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/tool_sheds_conf.xml dest=/galaxy-central/tool_shed_conf.xml
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/tool_sheds_conf.xml dest=/galaxy-central/config/tool_shed_conf.xml
     - name: Add startup.sh
       get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/startup.sh dest=/galaxy-central/startup.sh
+    - name: Add Tool Shed
+      command: add-tool-shed --url 'https://testtoolshed.g2.bx.psu.edu/' --name 'Test Tool Shed'
+    - name: Install repository
+      command: RUN install-repository "--url https://testtoolshed.g2.bx.psu.edu/ -o ksuderman --name lapps_datatypes_1_0_0 --panel-section-name Converters" 
