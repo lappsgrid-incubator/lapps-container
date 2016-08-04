@@ -1,0 +1,16 @@
+- hosts: giga-word
+  tasks:
+    - name: Get GigaWord WAR file
+      get_url: url=http://www.anc.org/downloads/docker/GigawordDataSource.war dest=/var/lib/tomcat7/webapps/GigawordDataSource.war
+    - name: Get index script
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-gigaword/master/index.sh dest=/usr/bin/index
+    - name: Get set env script
+      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-gigaword/master/setenv.sh dest=/usr/share/tomcat7/bin/setenv.sh
+    - name: Set permissions(1)
+      command: chmod a+x /usr/bin/index
+    - name: Set permission(2)
+      command: mkdir -p /var/log/gigaword
+    - name: Set permissions(3)
+      command: chmod a+rw /var/log/gigaword
+    - name: Set permissions(4)
+      command: chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/GigawordDataSource.war

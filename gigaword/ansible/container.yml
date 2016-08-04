@@ -1,0 +1,11 @@
+version: "1"
+services:
+  giga-word:
+    image: lappsgrid/gigaword
+    user: 'root'
+    command: ['usr/bin/index']
+registries: {}
+  # Add optional registries used for deployment. For example:
+  #  google:
+  #    url: https://gcr.io
+  #    namespace: my-cool-project-xxxxxx
