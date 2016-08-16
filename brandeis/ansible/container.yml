@@ -1,10 +1,10 @@
 version: "1"
 services:
-  brandies:
+  brandeis:
     image: lappsgrid/tomcat7
     user: 'root'
     command: ["/usr/bin/startup"]
-    
+
 registries: {}
   # Add optional registries used for deployment. For example:
   #  google:
