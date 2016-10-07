@@ -7,9 +7,8 @@
     - name: Get Tomcat users
       get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/tomcat-users.xml dest=/usr/share/tomcat7/bin/tomcat-users.xml
     - name: Get MASC Data Source 2.0.0
-      get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.0.0.tgz
+      get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.0.0.tgz dest=/var/lib/tomcat7/webapps
     - name: Get MASC Data Source 2.1.0
-      get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.1.0.tgz
+      get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.1.0.tgz dest=/var/lib/tomcat7/webapps
     - name: Get MASC Data Source 2.2.0
-      get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.2.0.tgz
-      
+      get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.2.0.tgz dest=/var/lib/tomcat7/webapps
