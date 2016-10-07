@@ -12,3 +12,11 @@
       get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.1.0.tgz dest=/var/lib/tomcat7/webapps
     - name: Get MASC Data Source 2.2.0
       get_url: url=http://www.anc.org/downloads/docker/MascDataSource_2.2.0.tgz dest=/var/lib/tomcat7/webapps
+    - name: Get Vassar Gate
+      get_url: url=http://www.anc.org/downloads/docker/vassar-gate.tgz dest=/usr/share/gate
+    - name: Get Vassar models
+      get_url: url=http://www.anc.org/downloads/docker/vassar-models.tgz dest=/usr/share/lapps
+    - name: Get MASC 3.0.0
+      get_url: url=http://www.anc.org/downloads/docker/MASC-3.0.0.tgz dest=/var/corpora/MASC-3.0.0
+    - name: Get Lingpipe
+      get_url: url=http://www.anc.org/downloads/docker/LingpipeServices.tgz dest=/var/lib/tomcat7/webapps
