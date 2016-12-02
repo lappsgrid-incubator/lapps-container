@@ -2,8 +2,8 @@
   tasks:
     - name: Update apt-get
       apt: upgrade=dist
-    - name: Install Linux Packages
-      command: apt-get install -y bash emacs24-nox git
+    #- name: Install Linux Packages
+    #  command: apt-get install -y bash emacs24-nox git
     - name: Add tools
       copy: src="./files/tools" dest="/galaxy-central/tools"
     - name: Add Index
@@ -20,5 +20,5 @@
       get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-galaxy-lappsgrid/master/startup.sh dest=/galaxy-central/startup.sh
     - name: Add Tool Shed
       command: add-tool-shed --url 'https://testtoolshed.g2.bx.psu.edu/' --name 'Test Tool Shed'
-    - name: Install repository
-      command: RUN install-repository "--url https://testtoolshed.g2.bx.psu.edu/ -o ksuderman --name lapps_datatypes_1_0_0 --panel-section-name Converters" 
+    #- name: Install repository
+    #  command: RUN install-repository "--url https://testtoolshed.g2.bx.psu.edu/ -o ksuderman --name lapps_datatypes_1_0_0 --panel-section-name Converters"
