@@ -1,7 +1,7 @@
 version: "1"
 services:
   brandeis:
-    image: lappsgrid/tomcat7
+    image: lappsgrid/tomcat7:1.1.0
     user: 'root'
     command: ["/usr/bin/startup"]
 
