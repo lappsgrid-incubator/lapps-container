@@ -1,8 +1,32 @@
 - hosts: brandeis
   tasks:
+    - name: Get startup script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/startup.sh
+        dest: /usr/bin/startup
+    - name: Get taillog script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/tail-log.sh
+        dest: /usr/bin/taillog
+    - name: Get waitforlog script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/waitforlog.sh
+        dest: /usr/bin/waitforlog
+    - name: Get waitforstart script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/waitforstart.sh
+        dest: /usr/bin/waitforstart
     - name: Get SET_ENV script
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/setenv.sh dest=/usr/share/tomcat7/bin/setenv.sh
-    - name: Get Shutdown script
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/shutdown.sh dest=/usr/bin/shutdown
-    - name: Get Tomcat users
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/tomcat-users.xml dest=/usr/share/tomcat7/bin/tomcat-users.xml
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-brandeis/master/setenv.sh
+        dest: /usr/share/tomcat7/bin/setenv.sh
+    - name: Get openNLP
+      get_url:
+        url: http://www.anc.org/downloads/docker/stanfordnlp-web-service%232.0.1.war
+        dest: /var/lib/tomcat7/webapps/opennlp-web-service#2.0.1.war
+    - name: Get stanfordNLP
+      unarchive:
+        src: http://downloads.lappsgrid.org/StanfordServices_2.1.0.tgz
+        dest: /var/lib/tomcat7/webapps/
+        copy: no
+        remote_src: yes

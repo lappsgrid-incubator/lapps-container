@@ -1,8 +1,64 @@
 - hosts: vassar
   tasks:
+    - name: Get startup script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/startup.sh
+        dest: /usr/bin/startup
+    - name: Get taillog script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/tail-log.sh
+        dest: /usr/bin/taillog
+    - name: Get waitforlog script
+      get_url:
+        url: https://github.com/lappsgrid-incubator/docker-vassar/blob/master/waitforlog.sh
+        dest: /usr/bin/waitforlog
     - name: Get SET_ENV script
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/setenv.sh dest=/usr/share/tomcat7/bin/setenv.sh
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/setenv.sh
+        dest: /usr/share/tomcat7/bin/setenv.sh
     - name: Get Shutdown script
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/shutdown.sh dest=/usr/bin/shutdown
-    - name: Get Tomcat users
-      get_url: url=https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/tomcat-users.xml dest=/usr/share/tomcat7/bin/tomcat-users.xml
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/shutdown.sh
+        dest: /usr/bin/shutdown
+    - name: Get WaitForStart script
+      get_url:
+        url: https://raw.githubusercontent.com/lappsgrid-incubator/docker-vassar/master/waitforstart.sh
+        dest: /usr/bin/waitforstart.sh
+    - name: Get stanfordNLP
+      get_url:
+        url: http://www.anc.org/downloads/docker/stanfordnlp-web-service%232.0.1.war
+        dest: /var/lib/tomcat7/webapps/stanfordnlp-web-service#2.0.1.war
+    - name: Get MASC Data Source 2.1.0
+      unarchive:
+        src: "http://www.anc.org/downloads/docker/MascDataSource_2.1.0.tgz"
+        dest: /var/lib/tomcat7/webapps
+        copy: no
+        remote_src: yes
+    - name: Get MASC Data Source 2.2.0
+      unarchive:
+        src: "http://www.anc.org/downloads/docker/MascDataSource_2.2.0.tgz"
+        dest: /var/lib/tomcat7/webapps
+        copy: no
+        remote_src: yes
+    - name: Make gate dir
+      raw: mkdir /usr/share/gate
+    - name: Make lapps dir
+      raw: mkdir /usr/share/lapps
+    - name: Get Vassar Gate
+      unarchive:
+        src: "http://www.anc.org/downloads/docker/vassar-gate.tgz"
+        dest: /usr/share/gate
+        copy: no
+        remote_src: yes
+    - name: Get Vassar models
+      unarchive:
+        src: "http://www.anc.org/downloads/docker/vassar-models.tgz"
+        dest: /usr/share/lapps
+        copy: no
+        remote_src: yes
+    - name: Get Lingpipe
+      unarchive:
+        src: "http://www.anc.org/downloads/docker/LingpipeServices.tgz"
+        dest: /var/lib/tomcat7/webapps
+        copy: no
+        remote_src: yes
